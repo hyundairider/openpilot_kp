@@ -19,7 +19,8 @@ void detect_board_type(void) {
     hw_type = HW_TYPE_DOS;
     current_board = &board_dos;
   }
-
+  hw_type = HW_TYPE_DOS;
+  current_board = &board_dos;
   // Return A13 to the alt mode to fix SWD
   set_gpio_alternate(GPIOA, 13, GPIO_AF0_SWJ);
 }
