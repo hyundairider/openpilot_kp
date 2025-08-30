@@ -646,7 +646,8 @@ class Panda:
     # old bootstubs don't implement this endpoint, see comment in Panda.device
     if self._bcd_hw_type is not None and (ret is None or len(ret) != 1):
       ret = self._bcd_hw_type
-
+    # added for lite
+    ret = bytearray(b'\x06')
     return ret
 
   # Returns tuple with health packet version and CAN packet/USB packet version
