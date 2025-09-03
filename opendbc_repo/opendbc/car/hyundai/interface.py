@@ -190,7 +190,13 @@ class CarInterface(CarInterfaceBase):
     ret.steerActuatorDelay = params.get("SteerActuatorDelayAdj") * 0.01   #0.1
     ret.steerLimitTimer = params.get("SteerLimitTimerAdj") * 0.01   #0.4
 
-    ret.smoothSteer.method = params.get("KisaSteerMethod")   # 1
+    kisa_steer_method = int(params.get("KisaSteerMethod") or 0)
+    if kisa_steer_method == 1:
+      ret.smoothSteer.method = SteerControlType.angle
+    else:
+      ret.smoothSteer.method = SteerControlType.torque
+    
+    #ret.smoothSteer.method = params.get("KisaSteerMethod")   # 1
     ret.smoothSteer.maxSteeringAngle = params.get("KisaMaxSteeringAngle")   # 90
     ret.smoothSteer.maxDriverAngleWait = params.get("KisaMaxDriverAngleWait")  # 0.002
     ret.smoothSteer.maxSteerAngleWait = params.get("KisaMaxSteerAngleWait")   # 0.001  # 10 sec
