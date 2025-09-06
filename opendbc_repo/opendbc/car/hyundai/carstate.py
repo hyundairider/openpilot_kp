@@ -91,8 +91,8 @@ class CarState(CarStateBase):
     self.prev_gap_button = 0
 
     params = Params()
-    self.steer.angleCorrection = (params.get("KisaSteerAngleCorrection") or 0) * 0.1
-    #self.steer_anglecorrection = params.get("KisaSteerAngleCorrection") * 0.1
+    #self.steer.angleCorrection = (params.get("KisaSteerAngleCorrection") or 0) * 0.1
+    self.steer_anglecorrection = (params.get("KisaSteerAngleCorrection") or 0) * 0.1
     self.gear_correction = params.get_bool("JustDoGearD")
 
     self.cruise_gap = params.get("KisaCruiseGapSet")
