@@ -190,6 +190,14 @@ class CarInterface(CarInterfaceBase):
     ret.steerActuatorDelay = (params.get("SteerActuatorDelayAdj") or 0) * 0.01   # 0.1
     ret.steerLimitTimer = (params.get("SteerLimitTimerAdj") or 0) * 0.01   # 0.4
 
+    # DEBUG: print all available CarParams fields
+
+    print("📋 Available CarParams fields:")
+    for field in dir(ret):
+      print(" -", field)
+    import time
+    time.sleep(15)   # pause 15s so you can take a clear photo
+
     kisa_steer_method = int(params.get("KisaSteerMethod") or 0)
     if kisa_steer_method == 1:
       ret.smoothSteer.method = SteerControlType.angle
